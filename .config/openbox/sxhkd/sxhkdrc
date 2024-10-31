@@ -1,0 +1,156 @@
+#Ghostwriter
+super + e
+    alacritty -e nvim 
+
+#Media Player
+super + m
+    alacritty -e ncmpcpp
+
+#Browser
+super + w
+    firefox
+
+#Conky-toggle
+super + c
+    conky-toggle
+
+#Htop
+super + t
+    alacritty -e btop
+
+#archlinux-logout
+super + x
+    archlinux-logout
+
+#alacritty
+super + Return
+    alacritty
+
+#Xkill
+super + Escape
+    xkill
+
+#Keyboard dependent
+#alacritty
+super + KP_Enter
+	alacritty
+
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#File-Manager
+super + shift + Return
+	thunar
+
+#Emacs
+super + shift + e
+  emacs
+
+#Keyboard dependent
+#File-Manager
+super + shift + KP_Enter
+	thunar
+
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#rofi
+super + r
+    ~/.config/openbox/launcher/launcher.sh
+
+super + shift + r
+	pkill -USR1 -x openbox
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+#Keyboard dependent
+super + shift + KP_Enter
+	thunar
+
+#Nitrogen
+ctrl + alt + i
+     nitrogen
+
+#Rofi theme selector
+ctrl + alt + r
+  rofi-theme-selector
+
+#Xcfe4-TaskManager
+ctrl + shift + Escape
+    alacritty -e btop
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+#pamixer --increase 5
+#amixer -D pulse set Master 10%+
+XF86AudioRaiseVolume
+    amixer -c 0 set Master 5%+
+
+#Lowers volume
+#pamixer --decrease 5
+#amixer -D pulse set Master 10%-
+XF86AudioLowerVolume
+    amixer -c 0 set Master 5%-
+    
+#Mute
+#pamixer --toggle-mute
+#amixer -D pulse set Master 1+ toggle
+XF86AudioMute
+    amixer -c 0 set Master 1+ toggle
+
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    mpc toggle
+
+#Next
+XF86AudioNext
+    mpc next
+
+#previous
+XF86AudioPrev
+    mpc previous
+
+#Stop
+XF86AudioStop
+    mpc stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#########################
+#        POLYBAR        #
+#########################
+
+#Hide polybar
+super + y
+    polybar-msg cmd toggle
+
+ctrl + alt + o
+    ~/.config/openbox/scripts/picom-toggle.sh
+
+#Screen Shot
+Print
+  scrot 'Plan3-%Y-%m-%d-%s_screenshot_$wx_h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)' && notify-send "Screenshot" "Picture saved to disk"
+

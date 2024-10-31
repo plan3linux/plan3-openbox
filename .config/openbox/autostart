@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+function run {
+	if ! pgrep $1; then
+		$@ &
+	fi
+}
+
+killall -9 xfsettingsd picom polybar mpd dunst ksuperkey xfce4-power-manager
+
+nitrogen --restore
+
+xfsettingsd &
+
+xfce4-power-manager &
+
+xsetroot -cursor_name left_ptr &
+
+killall conky
+conky -c $HOME/.config/openbox/system-overview &
+
+run sxhkd -c ~/.config/openbox/sxhkd/sxhkdrc &
+run nm-applet &
+run pamac-tray &
+run numlockx on &
+run $HOME/.config/openbox/polybar/launch.sh &
+run picom --config $HOME/.config/openbox/picom.conf &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+run volumeicon &
